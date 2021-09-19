@@ -93,7 +93,9 @@ def update_profile(request, user_id):
 
         for i in r1:
             r3[i['name']]= i['stargazers_count']
-            a= sorted(r3.items(), key=lambda x: x[1], reverse=True)
+
+        a= sorted(r3.items(), key=lambda x: x[1], reverse=True)
+        
         for i,j in a:
             repo.objects.create(Profile = profil,stars = j,name=  i)
         return redirect(reverse('profil', args=[user_id]))
