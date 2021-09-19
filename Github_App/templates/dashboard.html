@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub</title>
+</head>
+<body>
+    <h4>Built by 200050021-200050045</h4>
+    <h1>Welcome to GitHub Profiles!</h1>
+        <h2><a href="{% url 'explore' %}" id="header-links"> Explore </a>
+        <a href= "/profile/{{user1.id}}"  id="header-links"> My Profile </a>
+        <a href= '/logout'  id="header-links"> Logout </a></h2>
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>
