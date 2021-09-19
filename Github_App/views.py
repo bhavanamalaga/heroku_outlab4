@@ -21,8 +21,13 @@ def register(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('home')
+            username = form.cleaned_data['username']
+            r = requests.get('https://api.github.com/users/'+username)
+            if(r.status_code == 200):
+                form.save()                
+                return redirect('home')
+            else:
+                form = UserRegisterForm()
     else:
         form = UserRegisterForm()
 
