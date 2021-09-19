@@ -13,7 +13,8 @@ def convert_time():
     list = tim.split(" ")
     list[0] = calendar.month_abbr[int(list[0])]
     if(list[3] == '12'):
-        list[5] = 'p.m.'
+       list.append('p.m.')
+
     
     elif(int(list[3])//12 ==0):
         list.append('a.m.')
