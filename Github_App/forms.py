@@ -16,7 +16,7 @@ class UserRegisterForm(UserCreationForm):
 
     def save(self, commit=True):
             z = self.cleaned_data['username']
-            r = requests.get('https://api.github.com/users/'+user.username).json()
+            r = requests.get('https://api.github.com/users/'+z).json()
             user = super(UserRegisterForm, self).save(commit=False)
             user.username = self.cleaned_data['username']
             user.first_name = self.cleaned_data['firstname']
