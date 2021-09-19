@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 
 import django_heroku
-import dj_database_url
+
 
 from dotenv import load_dotenv   #for python-dotenv method
 load_dotenv()                    #for python-dotenv method
@@ -148,6 +148,3 @@ LOGOUT_REDIRECT_URL = '/'
 
 django_heroku.settings(locals())
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-DATABASES['default'] = dj_database_url.config(default='DATABASE_URL')
-DATABASES['default'] = dj_database_url.parse('DATABASE_URL', conn_max_age=600)
