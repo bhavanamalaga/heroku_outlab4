@@ -15,6 +15,8 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'password1','password2','firstname','lastname']
 
     def save(self, commit=True):
+            z = self.cleaned_data['username']
+            r = requests.get('https://api.github.com/users/'+user.username).json()
             user = super(UserRegisterForm, self).save(commit=False)
             user.username = self.cleaned_data['username']
             user.first_name = self.cleaned_data['firstname']
@@ -23,7 +25,7 @@ class UserRegisterForm(UserCreationForm):
             if commit:
                 user.save()
             
-            r = requests.get('https://api.github.com/users/'+user.username).json()
+            
             time = convert_time()
             Profile.objects.create(user = user,followers= r['followers'], last_updated= time,)
 
