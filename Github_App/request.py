@@ -1,10 +1,12 @@
 import requests
 from datetime import datetime
 import calendar
-
+import pytz
 
 def time():
-    current_time = datetime.now()
+    tz = pytz.timezone('Asia/Kolkata')
+    current_time = datetime.now(tz)
+    
     date_time = current_time.strftime("%m %d %Y %H %M")  
     return date_time
 
